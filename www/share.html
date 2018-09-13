@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="zh-cn">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>share--- 饥人谷</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab, jirengu">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="http://cdn.jirengu.com/ppt-cli/css/reveal.css">
+		<link rel="stylesheet" href="http://cdn.jirengu.com/ppt-cli/css/theme/league.css" id="theme">
+		
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="http://cdn.jirengu.com/ppt-cli/css/zenburn.css">
+
+		<!--[if lt IE 9]>
+		<script src="http://cdn.jirengu.com/ppt-cli/js/lib/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides align-center">
+			<section data-tag="h1"><h1>&#x5206;&#x4EAB;</h1>
+</section><section data-tag="down"><section data-tag="h2"><h2>vue &#x5206;&#x4EAB;</h2>
+</section><section data-tag="h3"><h3>vue &#x7684;&#x53CC;&#x5411;&#x7ED1;&#x5B9A;&#x5230;&#x5355;&#x5411;&#x7ED1;&#x5B9A;</h3>
+<p>&#x9762;&#x8BD5;&#x9898;&#xFF1A; vue &#x548C; react &#x7684;&#x533A;&#x522B;</p>
+<p>&#x666E;&#x904D;&#x56DE;&#x7B54;&#x4F1A;&#x5305;&#x542B;&#x8FD9;&#x4E2A;&#x7B54;&#x6848;&#xFF1A;vue &#x662F;&#x53CC;&#x5411;&#x7ED1;&#x5B9A;&#xFF0C;react &#x662F;&#x5355;&#x5411;&#x7ED1;&#x5B9A;</p>
+<p>&#x4ECE; Vue 0.x &#x5F00;&#x59CB;&#xFF0C;Vue &#x5C31;&#x7528; v-model &#x6765;&#x5B9E;&#x73B0;&#x300C;&#x53CC;&#x5411;&#x7ED1;&#x5B9A;&#x300D;&#x3002;</p>
+<pre><code>data: {
+    user: { name: &apos;liLei&apos;}
+}
+&lt;input v-model=&quot;user.name&quot;&gt;
+</code></pre>
+</section><section data-tag="h3"><h3>v-model </h3>
+<p>v-model &#x5B9E;&#x9645;&#x505A;&#x4E86;&#x4E24;&#x4E2A;&#x64CD;&#x4F5C;</p>
+<ol>
+<li>user.name &#x7684;&#x53D8;&#x5316;&#x81EA;&#x52A8;&#x540C;&#x6B65;&#x5230; input.value</li>
+<li>input.value &#x7684;&#x53D8;&#x5316;&#x81EA;&#x52A8;&#x540C;&#x6B65;&#x5230; user.name</li>
+</ol>
+<p>flux &#x5174;&#x8D77;&#x8FC7;&#x540E;&#xFF0C;vue &#x7684;&#x4F5C;&#x8005;&#x91CD;&#x65B0;&#x5BA1;&#x89C6;&#x4E86;&#x53CC;&#x5411;&#x7ED1;&#x5B9A;&#xFF0C;&#x53D1;&#x73B0;&#x53CC;&#x5411;&#x7ED1;&#x5B9A;&#x7684;&#x4E00;&#x4E9B;&#x95EE;&#x9898;&#x540E;&#xFF0C;&#x66F4;&#x503E;&#x5411;&#x4E8E;&#x5355;&#x5411;&#x7ED1;&#x5B9A;&#xFF0C;v-model &#x88AB;&#x62C6;&#x6210;&#x4E86;&#x4E24;&#x4E2A;&#x90E8;&#x5206;</p>
+<pre><code>data: {
+    user: { name: &apos;liLei&apos;}
+},
+&lt;input :value=&quot;user.name&quot; @input=&quot;user.name = $event&quot;&gt;
+</code></pre>
+</section><section data-tag="h3"><h3>&#x8003;&#x8651;&#x5982;&#x4E0B;&#x573A;&#x666F;</h3>
+<p>&#x5047;&#x8BBE;&#x6709;&#x4E24;&#x4E2A;&#x5730;&#x65B9;&#x90FD;&#x5728;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x679C;&#x4E24;&#x4E2A;&#x5730;&#x65B9;&#x540C;&#x65F6;&#x6539;&#x4E86;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#xFF0C;&#x90A3;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x6700;&#x540E;&#x7684;&#x503C;&#x662F;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;</p>
+<p>&#x4E00;&#x65E6;&#x51FA;&#x73B0;&#x4E86;&#x591A;&#x4E2A;&#x66F4;&#x6539;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x6570;&#x636E;&#x5C31;&#x53D8;&#x5F97;&#x4E0D;&#x53EF;&#x63A7;&#x4E86;&#xFF0C;&#x51FA;&#x73B0; bug &#x4E5F;&#x5F88;&#x96BE;&#x5B9A;&#x4F4D;</p>
+</section><section data-tag="h3"><h3>&#x5355;&#x5411;&#x7ED1;&#x5B9A;&#x7684;&#x597D;&#x5904;</h3>
+<blockquote>
+<p>&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x53EA;&#x80FD;&#x4E00;&#x4E2A;&#x4EBA;&#x6539;&#xFF0C;&#x53EA;&#x6709;&#x62E5;&#x6709;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x7684;&#x4EBA;&#x624D;&#x80FD;&#x66F4;&#x6539;&#x6570;&#x636E;</p>
+</blockquote>
+<p>&#x4F8B;&#x5982; app &#x7EC4;&#x4EF6;&#x628A; user.name &#x540C;&#x65F6;&#x4F20;&#x9012;&#x7ED9;&#x4E86;&#x4E24;&#x4E2A;&#x7EC4;&#x4EF6; a &#x548C; b&#xFF0C;&#x4E24;&#x4E2A;&#x7EC4;&#x4EF6;&#x90FD;&#x4E0D;&#x80FD;&#x66F4;&#x6539;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x66F4;&#x6539;&#x6570;&#x636E;&#xFF0C;&#x9700;&#x8981;&#x5411; app &#x7EC4;&#x4EF6;&#x63D0;&#x51FA;&#x7533;&#x8BF7;&#xFF0C;app &#x7EC4;&#x4EF6;&#x63A5;&#x5230;&#x4E86;&#x7533;&#x8BF7;&#xFF0C;&#x7EDF;&#x4E00;&#x628A;&#x6570;&#x636E;&#x7684;&#x6539;&#x53D8;&#x901A;&#x77E5;&#x7ED9;&#x4F7F;&#x7528; user.name &#x7684;&#x7EC4;&#x4EF6; a &#x548C; b&#x3002;&#x8FD9;&#x6837;&#x7684;&#x597D;&#x5904;</p>
+<ol>
+<li> &#x6570;&#x636E;&#x62E5;&#x6709;&#x8005;&#x6E05;&#x695A;&#x5730;&#x77E5;&#x9053;&#x6570;&#x636E;&#x53D8;&#x5316;&#x7684;&#x539F;&#x56E0;&#x548C;&#x65F6;&#x673A;&#xFF08;&#x56E0;&#x4E3A;&#x662F;&#x5B83;&#x81EA;&#x5DF1;&#x64CD;&#x4F5C;&#x6570;&#x636E;&#x7684;&#xFF09;</li>
+<li>&#x6570;&#x636E;&#x62E5;&#x6709;&#x8005;&#x53EF;&#x4EE5;&#x963B;&#x6B62;&#x6570;&#x636E;&#x53D8;&#x5316;&#xFF08;app &#x7EC4;&#x4EF6;&#x53EF;&#x4EE5;&#x8F7B;&#x677E;&#x7684;&#x63A7;&#x5236; user.name &#x7684;&#x53D8;&#x5316;&#xFF0C;&#x8BA9;&#x7A0B;&#x5E8F;&#x66F4;&#x53EF;&#x63A7;&#xFF09;</li>
+</ol>
+</section><section data-tag="h3"><h3>&#x4E3E;&#x4F8B;</h3>
+<p>&#x67D0;&#x53CC;&#x5411;&#x7ED1;&#x5B9A;&#x7269;&#x6D41;&#x516C;&#x53F8;&#x6709; 500 &#x4E07;&#x6D41;&#x52A8;&#x8D44;&#x91D1;&#xFF0C;&#x6709;&#x4E24;&#x4E2A;&#x90E8;&#x95E8;&#x624B;&#x673A;&#x548C;&#x7535;&#x8111;&#xFF0C;&#x624B;&#x673A;&#x90E8;&#x95E8;&#x8FDB;&#x8D27;&#x9700;&#x8981; 400 &#x4E07;&#xFF0C;&#x7535;&#x8111;&#x90E8;&#x95E8;&#x8FDB;&#x8D27;&#x9700;&#x8981; 200 &#x4E07;&#xFF0C;&#x4ED6;&#x4EEC;&#x77E5;&#x9053;&#x516C;&#x53F8;&#x6709; 500 &#x4E07;&#x6D41;&#x52A8;&#x8D44;&#x91D1;&#xFF0C;&#x8DB3;&#x591F;&#x8FDB;&#x8D27;&#xFF0C;&#x6240;&#x4EE5;&#x6309;&#x7167;&#x6B63;&#x5E38;&#x534F;&#x8BAE;&#x5411;&#x9500;&#x552E;&#x516C;&#x53F8;&#x8FDB;&#x8D27;&#xFF0C;&#x5171;&#x501F;&#x6B3E; 600 &#x4E07;&#xFF0C;&#x8D26;&#x671F;&#x4E3A;&#x4E00;&#x4E2A;&#x6708;&#x3002;&#x4E00;&#x4E2A;&#x6708;&#x540E;&#xFF0C;&#x516C;&#x53F8;&#x9700;&#x8981;&#x4ED8;&#x6B3E;&#x65F6;&#xFF0C;&#x53D1;&#x73B0;&#x8FD8;&#x5DEE; 100 &#x4E07;&#x4ED8;&#x4E0D;&#x51FA;&#x6765;&#xFF0C;&#x4E8E;&#x662F;&#x53EA;&#x80FD;&#x5411;&#x4E2D;&#x667A;&#x8BDA;&#x501F;&#x6B3E; 100 &#x4E07;&#x4F5C;&#x4E3A;&#x7ECF;&#x8425;&#x8D39;&#x7528;&#x3002;&#x7ED3;&#x679C;&#x56E0;&#x4E3A;&#x501F;&#x6B3E;&#x6D41;&#x7A0B;&#x592A;&#x957F;&#xFF0C;&#x8D44;&#x91D1;&#x94FE;&#x65AD;&#x88C2;&#xFF0C;&#x7834;&#x4EA7;&#x4E86;</p>
+</section><section data-tag="h3"><h3>&#x8BED;&#x6CD5;&#x7CD6;</h3>
+<p> &#x73B0;&#x5728; vue &#x66F4;&#x503E;&#x5411;&#x4E8E;&#x5355;&#x5411;&#x7ED1;&#x5B9A;
+&#x4F46;&#x662F;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;  &#x53CC;&#x5411;&#x7ED1;&#x5B9A;&#x8BED;&#x6CD5;&#x7CD6;&#x3002;&#x5982;&#x679C;&#x4E00;&#x5B9A;&#x60F3;&#x5728;&#x5B50;&#x7EC4;&#x4EF6;&#x5185;&#x66F4;&#x6539;&#x7236;&#x7EC4;&#x4EF6;&#x7684;&#x503C;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x7684;(&#x8D34;&#x7269;&#x6D41;&#x9879;&#x76EE;&#x5185;&#x7684;&#x4EE3;&#x7801;)</p>
+<pre><code>.sync&#x8BED;&#x6CD5;&#x7CD6;
+</code></pre>
+</section><section data-tag="h3"><h3>vue &#x7684;&#x6E10;&#x8FDB;&#x5F0F;</h3>
+<blockquote>
+<p>&#x4E2A;&#x4EBA;&#x8BA4;&#x4E3A; vue &#x7684;&#x6E10;&#x8FDB;&#x5F0F;&#x662F;&#x5B83;&#x66F4;&#x4F18;&#x4E8E; react &#x7684;&#x5730;&#x65B9;</p>
+</blockquote>
+<p>&#x6240;&#x4EE5;&#x5F88;&#x591A;&#x539F; jquery &#x9879;&#x76EE;&#x53EF;&#x4EE5;&#x5F88;&#x8F7B;&#x677E;&#x7684;&#x5207;&#x6362;&#x5230; vue &#x6765;&#x5199;&#x3002;</p>
+<pre><code>var data = {
+    el:&quot;#app&quot;
+    data:{
+        hello:&apos;hello world&apos;
+    }
+}
+var app = new Vue(data)
+
+$(&apos;#box&apos;).on(&apos;click&apos;, &apos;.btn&apos;, function(e){
+    data.data.hello = e.target.innerText
+})
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x65B0;&#x624B;&#x6765;&#x8BF4;&#x975E;&#x5E38;&#x7684;&#x53CB;&#x597D;</p>
+</section></section><section data-tag="down"><section data-tag="h2"><h2>VirtualDOM</h2>
+<p></p>
+</section><section data-tag="h3"><h3>vue &#x4E0E; jquery &#x7684;&#x533A;&#x522B;</h3>
+<pre><code>// jquery
+$(&apos;.box&apos;)
+  .append(&apos;&lt;p&gt;Test&lt;/p&gt;&apos;)
+  .xxx()
+  .yyy()
+  .jjj()
+  ...
+
+// vue
+&lt;div v-if=&quot;show&quot;&gt;{{msg}}&lt;/div&gt;
+</code></pre>
+<p>jquery &#x6709;&#x4E24;&#x79CD;&#x884C;&#x4E3A;&#xFF0C;&#x66F4;&#x6539;&#x72B6;&#x6001;+&#x64CD;&#x4F5C; DOM&#xFF0C;vue &#x53EA;&#x9700;&#x64CD;&#x4F5C;&#x72B6;&#x6001;&#x3002;
+vue &#x7684;&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x53EA;&#x5173;&#x5FC3;&#x72B6;&#x6001;&#x7684;&#x6539;&#x53D8;&#xFF0C;&#x51CF;&#x5C11;&#x4E86;&#x5BF9; DOM &#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5927;&#x5927;&#x964D;&#x4F4E;&#x4E86;&#x4EE3;&#x7801;&#x7684;&#x590D;&#x6742;&#x5EA6;</p>
+</section><section data-tag="h3"><h3> &#x6E32;&#x67D3;</h3>
+<p>jquery &#x590D;&#x6742;&#x7684; DOM &#x64CD;&#x4F5C;&#xFF0C;vue &#x662F;&#x600E;&#x4E48;&#x5E2E;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;&#x7684;&#x5462;</p>
+<p> &#x7B80;&#x5355;&#x7C97;&#x66B4;&#x7684;&#x65B9;&#x5F0F;</p>
+<pre><code>var msg = &apos;hello world&apos;
+</code></pre>
+<p>&#x5F53; msg &#x6539;&#x53D8;&#xFF0C; &#x7528; msg &#x751F;&#x6210;&#x65B0;&#x7684; DOM &#x7136;&#x540E;&#x7528; innerHTML &#x628A;&#x5C31;&#x7684; DOM &#x66FF;&#x6362;&#x6389;
+
+&#x5199;&#x5C0F;&#x529F;&#x80FD;&#x65F6;&#xFF0C;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x6CA1;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x6846;&#x67B6;&#x4E0D;&#x884C;&#xFF0C;&#x6846;&#x67B6;&#x9700;&#x8981;&#x505A;&#x5230;&#x5C40;&#x90E8;&#x6E32;&#x67D3;</p>
+<p> &#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;
+VirtualDOM&#x3001;&#x810F;&#x68C0;&#x6D4B;&#x3001;&#x7EC6;&#x7C92;&#x5EA6;&#x7ED1;&#x5B9A;</p>
+<p>vue &#x65E9;&#x671F;&#x4F7F;&#x7528;&#x8FC7;&#x7EC6;&#x7C92;&#x5EA6;&#x65B9;&#x6848;&#xFF0C;&#x5982;&#x679C;&#x6A21;&#x7248;&#x4E2D;&#x6570;&#x636E;&#x6709;&#x662F; 10 &#x4E2A;&#x6807;&#x7B7E;&#x4F7F;&#x7528;&#x5B83;&#xFF0C;&#x90A3;&#x4E48;&#x53D8;&#x91CF;&#x7ED1;&#x5B9A;&#x7684;&#x5C31;&#x662F; 10 &#x4E2A;&#x5177;&#x4F53;&#x7684;&#x6807;&#x7B7E;&#x3002;&#x6570;&#x636E;&#x6539;&#x53D8;&#x7684;&#x4E00;&#x77AC;&#x95F4;&#xFF0C;vue &#x5C31;&#x77E5;&#x9053;&#x72B6;&#x6001;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x76F4;&#x63A5;&#x628A;&#x4E0E;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x7ED1;&#x5B9A;&#x7684;&#x6807;&#x7B7E;&#x8FDB;&#x884C;&#x66F4;&#x65B0;&#xFF0C;&#x8FBE;&#x5230;&#x5C40;&#x90E8;&#x66F4;&#x65B0;&#x7684;&#x76EE;&#x7684;</p>
+<p> &#x8FD9;&#x4E2A;&#x65B9;&#x6848;&#x6709;&#x4E00;&#x5B9A;&#x7684;  &#x4EE3;&#x4EF7;&#xFF0C;&#x7C92;&#x5EA6;&#x592A;&#x5C0F;&#xFF0C;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x8FFD;&#x8E2A;&#x5F00;&#x9500;&#x3002;</p>
+</section><section data-tag="h3"><h3>vue &#x7684; VirtualDOM</h3>
+<blockquote>
+<p>&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x5BF9;&#x5E94;&#x67D0;&#x4E2A;&#x7EC4;&#x4EF6;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5177;&#x4F53;&#x6807;&#x7B7E;&#xFF0C;&#x72B6;&#x6001;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#xFF0C;&#x901A;&#x77E5;&#x7EC4;&#x4EF6;&#xFF0C;&#x7EC4;&#x4EF6;&#x518D;&#x4F7F;&#x7528; VirtualDOM &#x6765;&#x66F4;&#x65B0;&#x5177;&#x4F53;&#x7684; DOM</p>
+</blockquote>
+<pre><code>var mydiv = document.createElement(&apos;div&apos;);
+var str = &apos;&apos;
+for(var k in mydiv ){
+  str += k
+}
+console.log(str)
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; DOM &#x8282;&#x70B9;&#xFF0C;&#x4F1A;&#x751F;&#x6210;&#x5F88;&#x591A;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x5982;&#x679C;&#x6BCF;&#x6B21;&#x90FD;&#x53BB;&#x65B0;&#x5EFA;&#x9500;&#x6BC1;&#xFF0C;&#x4F1A;&#x6D6A;&#x8D39;&#x5927;&#x91CF;&#x8D44;&#x6E90;</p>
+<p>vue &#x5728;&#x7F16;&#x8BD1;&#x4F1A;&#x628A; vue &#x6A21;&#x7248;&#x7F16;&#x8BD1;&#x6210;&#x4E00;&#x4E2A;&#x6E32;&#x67D3;&#x51FD;&#x6570;&#xFF0C;&#x51FD;&#x6570;&#x88AB;&#x8C03;&#x7528;&#x540E;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x7684; DOM &#x6811;&#xFF0C;&#x8FD9;&#x4E2A; DOM &#x6811;&#x7528;&#x6765;&#x63CF;&#x8FF0;&#x5F53;&#x524D;&#x9875;&#x9762;&#x6240;&#x5904;&#x7684;&#x72B6;&#x6001;&#x3002;vue &#x7684; patch &#x65B9;&#x6CD5;&#x8D1F;&#x8D23;&#x628A; virtulaDOM &#x6E32;&#x67D3;&#x5230;&#x771F;&#x5B9E; DOM &#x4E0A;</p>
+<p>&#x4E0A;&#x9762;&#x8BB2;&#x5230;&#x4E86; vue &#x5728;&#x6570;&#x636E;&#x6539;&#x53D8;&#x65F6;&#x901A;&#x77E5;&#x7EC4;&#x4EF6;&#xFF0C;&#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x6267;&#x884C;&#x6E32;&#x67D3;&#x51FD;&#x6570;&#x751F;&#x6210;&#x65B0;&#x7684;&#x6811;&#xFF0C;&#x7136;&#x540E;&#x4E0E;&#x65E7;&#x7684;&#x6811;&#x8FDB;&#x884C;&#x5BF9;&#x6BD4;&#xFF0C;&#x5F97;&#x5230;&#x6700;&#x7EC8;&#x9700;&#x8981;&#x66F4;&#x6539;&#x7684;&#x771F;&#x5B9E; DOM &#x4E0A;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528; patch &#x65B9;&#x6CD5;&#x6E32;&#x67D3; DOM</p>
+</section><section data-tag="h3"><h3>virtulaDOM &#x539F;&#x7406;</h3>
+<pre><code>msg = &apos;hello world&apos;
+var element = {
+  tagName: &apos;ul&apos;, // &#x8282;&#x70B9;&#x6807;&#x7B7E;&#x540D;
+  props: { // DOM&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x7528;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5B58;&#x50A8;&#x952E;&#x503C;&#x5BF9;
+    id: &apos;list&apos;&#xFF0C;
+    text: msg
+  },
+  children: [ // &#x8BE5;&#x8282;&#x70B9;&#x7684;&#x5B50;&#x8282;&#x70B9;
+    {tagName: &apos;li&apos;, props: {class: &apos;item&apos;}, children: [&quot;Item 1&quot;]},
+    {tagName: &apos;li&apos;, props: {class: &apos;item&apos;}, children: [&quot;Item 2&quot;]},
+    {tagName: &apos;li&apos;, props: {class: &apos;item&apos;}, children: [&quot;Item 3&quot;]},
+  ]
+}
+</code></pre>
+<p>&#x5BF9;&#x5E94;&#x7684; HTML</p>
+<pre><code>&lt;ul id=&apos;list&apos;&gt;
+  &lt;li class=&apos;item&apos;&gt;Item 1&lt;/li&gt;
+  &lt;li class=&apos;item&apos;&gt;Item 2&lt;/li&gt;
+  &lt;li class=&apos;item&apos;&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p></p>
+</section><section data-tag="h3"><h3>&#x5B9E;&#x73B0; virtulaDOM &#x7684;&#x51E0;&#x4E2A;&#x6B65;&#x9AA4;</h3>
+</section><section data-tag="h3"><h3>&#x7B2C;&#x4E00;&#x6B65;</h3>
+<p>&#x7528; javascript &#x5BF9;&#x8C61;&#x7ED3;&#x6784;&#x8868;&#x793A; DOM &#x6811;&#x7ED3;&#x6784;&#xFF0C;&#x7528;&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x6784;&#x5EFA;&#x771F;&#x5B9E;&#x7684; DOM &#x6811;&#x5E76;&#x6E32;&#x67D3;&#x5230;&#x9875;&#x9762;</p>
+</section><section data-tag="h3"><h3>&#x7B2C;&#x4E8C;&#x6B65;</h3>
+<p>&#x72B6;&#x6001;&#x6539;&#x53D8;&#x65F6;&#xFF0C;&#x91CD;&#x65B0;&#x6784;&#x9020; DOM &#x6811;&#xFF0C;&#x65B0;&#x65E7;&#x6811;&#x8FDB;&#x884C;&#x5BF9;&#x6BD4;&#x7EAA;&#x5F55;&#x5DEE;&#x5F02;</p>
+<ul>
+<li>&#x5DEE;&#x5F02;&#x5206;&#x7C7B;<pre><code>const REPLACE = 0   // &#x66F4;&#x6362;
+const TEXT = 1  // text&#x53D8;&#x5316;
+</code></pre>
+</li>
+<li>&#x5DEE;&#x5F02;&#x8FDB;&#x884C;&#x5BF9;&#x6BD4;<pre><code>dif = [{type:REPLACE,newNode:{tagName:&apos;ul&apos;,props:{}]
+</code></pre>
+</li>
+</ul>
+</section><section data-tag="h3"><h3>&#x7B2C;&#x4E09;&#x6B65;</h3>
+<p>&#x628A;&#x6B65;&#x9AA4; 2 &#x8BB0;&#x5F55;&#x7684;&#x5DEE;&#x5F02;&#x5E94;&#x7528;&#x5230;&#x6B65;&#x9AA4; 1 &#x521B;&#x5EFA;&#x7684;&#x771F;&#x5B9E; DOM &#x6811;&#x3002;</p>
+<ul>
+<li>&#x904D;&#x5386;&#x865A;&#x62DF; DOM &#x6811;&#xFF0C;&#x4ECE;&#x6B65;&#x9AA4; 2 &#x751F;&#x6210; dif &#x4E2D;&#x627E;&#x5230;&#x5DEE;&#x5F02;&#xFF0C;&#x6839;&#x636E;&#x5DEE;&#x5F02;&#x4E0D;&#x540C;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;<pre><code>applyPatches(node, currentPatches){
+    currentPatches.forEach((currentPatch)=&gt;{
+        switch(currentPatch.type){
+            case REPLACE:
+                // &#x505A;replace&#x64CD;&#x4F5C;
+            break
+            case TEXT:
+                // &#x505A;&#x66F4;&#x6539;text&#x64CD;&#x4F5C;
+            break
+        }
+    })
+}
+</code></pre>
+</li>
+</ul>
+<p>virtulaDOM &#x672C;&#x8D28;&#x662F;&#x5728; js &#x4E0E; DOM &#x4E4B;&#x95F4;&#x505A;&#x4E86;&#x4E00;&#x4E2A;&#x7F13;&#x5B58;&#xFF0C;&#x6700;&#x5927;&#x5316;&#x7684;&#x5229;&#x7528;&#x9AD8;&#x6548;&#x7684; js &#x6765;&#x5904;&#x7406; DOM &#x64CD;&#x4F5C;</p>
+</section><section data-tag="h3"><h3>&#x4F18;&#x52BF;</h3>
+<p>js &#x7684;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#x975E;&#x5E38;&#x5FEB;&#xFF0C;&#x76F8;&#x53CD; DOM &#x672C;&#x8EAB;&#x5F88;&#x6162;&#xFF0C;&#x8C03;&#x7528;&#x539F;  &#x751F; DOM API&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x9700;&#x8981;&#x5728; javascript &#x5F15;&#x64CE;&#x7684;&#x8BED;&#x5883;&#x4E0B;&#x63A5;&#x89E6;&#x539F;&#x751F; DOM &#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x8FC7;&#x7A0B;&#x6709;&#x6027;&#x80FD;&#x635F;&#x8017;&#xFF0C;virtulaDOM &#x672C;&#x8D28;&#x4E0A;&#x662F;&#x628A;&#x6D69;&#x65F6;&#x95F4;&#x7684;&#x64CD;&#x4F5C;&#x653E;&#x5230;&#x5B58;&#x7CB9;&#x7684;&#x8BA1;&#x7B97;&#x6765;&#x505A;&#x3002;&#x628A;&#x6700;&#x540E;&#x7684;&#x7ED3;&#x679C;&#x4E00;&#x6B21;&#x6027;&#x6E32;&#x67D3;&#x7684;&#x9875;&#x9762;&#x4E0A;&#x3002;&#x51CF;&#x5C11;&#x4E86; repaint &#x548C; reflow&#x3002;&#x63D0;&#x9AD8;&#x4E86;&#x6027;&#x80FD;</p>
+</section></section><section data-tag="down"><section data-tag="h2"><h2>&#x8868;&#x7F16;&#x7A0B;</h2>
+<blockquote>
+<p>&#x7F16;&#x5199;&#x7A0B;&#x5E8F;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5E38;&#x9047;&#x5230;&#x5F88;&#x591A;&#x7684; if else&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x8868;&#x6765;&#x4EE3;&#x66FF;&#x590D;&#x6742;&#x7684;&#x5206;&#x652F;</p>
+</blockquote>
+<p>&#x4F8B;:
+&#x5047;&#x8BBE;&#x7528;&#x6237;&#x6709;&#x4E09;&#x4E2A;&#x7279;&#x5F81; a,b,c</p>
+<pre><code>if(a&amp;&amp;b&amp;&amp;c){
+    return 1
+}else if(a&amp;&amp;!b&amp;&amp;!c){
+    return 2
+}else if(
+    // &#x5982;&#x4F55;&#x8868;&#x793A;&#x4E0B;&#x56FE;&#x5C5E;&#x4E8E;a&#xFF0C;b&#xFF0C;c&#x4E2D;&#x4E0D;&#x5C5E;&#x4E8E;b&#x7684;&#x90E8;&#x5206;&#x5462;
+){}
+</code></pre>
+</section><section data-tag="h3"><h3>&#x56FE;</h3>
+<p><img src="https://ws3.sinaimg.cn/large/0069RVTdgy1fv89xqivzbj30qy0t643s.jpg" alt="123"></p>
+</section><section data-tag="h3"><h3>&#x4F7F;&#x7528;&#x8868;&#x6765;&#x5904;&#x7406;</h3>
+<pre><code>var table = {
+    true: { // &#x7B2C;&#x4E00;&#x5C42;true&#x3001;false&#x4EE3;&#x8868;&#x5728;&#x4E0D;&#x5728;a&#x5185;&#x90E8;
+        true: { // &#x7B2C;&#x4E8C;&#x5C42;&#x4EE3;&#x8868;&#x5728;b&#x5185;&#x90E8;
+            true: 1 // &#x7B2C;&#x4E09;&#x5C42;&#x4EE3;&#x8868;&#x5728;c&#x5185;&#x90E8;
+            false: 2
+        },
+        false: {
+            true: 1
+            false: 3
+        }
+    },
+    false: {
+        true: { // &#x7B2C;&#x4E8C;&#x5C42;&#x4EE3;&#x8868;&#x5728;b&#x5185;&#x90E8;
+            true: 1
+            false: 2
+        },
+        false: {
+            true: 1
+            false: 3
+        }
+    }
+}
+</code></pre>
+</section></section><section data-tag="down"><section data-tag="h2"><h2>&#x975E;&#x6280;&#x672F;&#x5206;&#x4EAB;</h2>
+</section><section data-tag="h3"><h3>teahour</h3>
+<p><a href="http://teahour.fm/">&#x94FE;&#x63A5;</a></p>
+</section><section data-tag="h3"><h3>RXjs</h3>
+<p><a href="https://www.youtube.com/watch?v=XRYN2xt11Ek">&#x89C6;&#x9891;</a></p>
+</section></section><section data-tag="down"><section data-tag="h2"><h2>&#x95EE;&#x9898;</h2>
+</section><section data-tag="h3"><h3>&#x540C;&#x4E00;&#x4E2A;&#x8868;&#x5355;&#x5B57;&#x6BB5;&#xFF0C;&#x4E0D;&#x540C;&#x60C5;&#x51B5;&#x4E0B;&#x5BF9;&#x5E94;&#x4E0D;&#x540C;&#x7684;&#x6821;&#x9A8C;&#x89C4;&#x5219;</h3>
+<p> &#x4E00;&#x4E2A;&#x8BC1;&#x4EF6;&#x53F7;&#x5BF9;&#x5E94;&#x591A;&#x4E2A;&#x4EA7;&#x54C1;&#x7C7B;&#x578B;&#xFF0C;&#x6BCF;&#x4E2A;&#x7C7B;&#x578B;&#x90FD;&#x9700;&#x8981;&#x586B;&#x5199;
+&#x501F;&#x6B3E;&#x989D;&#x5EA6;
+&#x4EA7;&#x54C1;&#x7C7B;&#x578B;&#x4E00; &#x501F;&#x6B3E;&#x989D;&#x5EA6; &#x9650;&#x5236; 3-8
+&#x4EA7;&#x54C1;&#x7C7B;&#x578B;&#x4E8C; &#x501F;&#x6B3E;&#x989D;&#x5EA6; &#x9650;&#x5236; 1-12
+&#x4EA7;&#x54C1;&#x7C7B;&#x578B;&#x4E09; &#x501F;&#x6B3E;&#x989D;&#x5EA6; &#x9650;&#x5236; 5-10</p>
+<p>&#x5B9E;&#x9645;&#x573A;&#x666F;&#x4E2D;&#x4EA7;&#x54C1;&#x7C7B;&#x578B;&#x4F1A;&#x4E0D;&#x505C;&#x589E;&#x52A0;&#x3002;
+&#x76EE;&#x524D;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x662F;&#x628A; v-model &#x7ED1;&#x5B9A;&#x5230;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5; &#x8868;&#x5355;&#x9A8C;&#x8BC1; prop &#x89C4;&#x5219;&#x7ED1;&#x5B9A;&#x5230;&#x5BF9;&#x5E94;&#x6BCF;&#x4E00;&#x4E2A;&#x4EA7;&#x54C1;&#x7684;&#x5B57;&#x6BB5;&#x3002;&#x7136;&#x540E; watch &#x4E3B;&#x8981;&#x5B57;&#x6BB5;&#xFF0C;&#x518D;&#x6839;&#x636E;&#x4E3B;&#x8981;&#x5B57;&#x6BB5;&#x7684;&#x53D8;&#x66F4;&#x628A;&#x503C;&#x8D4B;&#x7ED9;&#x5F53;&#x524D;&#x76F8;&#x5E94;&#x4EA7;&#x54C1;&#x7C7B;&#x578B;&#x7684;&#x5B57;&#x6BB5;&#x3001;&#x6E05;&#x7A7A;&#x5176;&#x4ED6;&#x5B57;&#x6BB5;&#x7684;&#x503C;</p>
+<p>&#x53E6;&#x5916;&#x8FD8;&#x6709; computed &#x52A8;&#x6001;&#x8BA1;&#x7B97;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;</p>
+</section><section data-tag="h3"><h3> &#x524D;&#x7AEF;&#x7684;&#x5B66;&#x4E60;&#x8DEF;&#x5F84;</h3>
+<blockquote>
+<p> &#x5BF9;&#x524D;&#x7AEF;&#x6210;&#x957F;&#x8DEF;&#x5F84;&#x6709;&#x7591;&#x95EE;</p>
+</blockquote>
+<ol>
+<li> &#x505A;&#x4E00;&#x4E2A; T &#x578B;&#x524D;&#x7AEF;&#xFF0C;&#x6280;&#x672F;&#x7684;&#x5BBD;&#x5EA6;&#x5982;&#x4F55;&#x5B9A;&#x4E49;(&#x6216;&#x5E94;&#x8BE5;&#x4E13;&#x54EA;&#x4E9B;&#xFF0C;&#x5BBD;&#x6CDB;&#x4E86;&#x89E3;)</li>
+<li> &#x4E00;&#x4E2A;&#x4E13;&#x4E1A;&#x7684;&#x524D;&#x7AEF;&#x5BF9;&#x540E;&#x7AEF;&#x7684;&#x77E5;&#x8BC6;&#x638C;&#x63E1;&#x5E94;&#x8BE5;&#x5230;&#x7A0B;&#x5EA6;&#xFF08;&#x6216;&#x8005;&#x6700;&#x7EC8;&#x90FD;&#x8981;&#x8D70;&#x5411;&#x5168;&#x6808;&#x7684;&#x9053;&#x8DEF;&#xFF1F;&#xFF09;</li>
+</ol>
+</section></section>
+			</div>
+
+		</div>
+
+		<script src="http://cdn.jirengu.com/ppt-cli/js/lib/head.min.js"></script>
+		<script src="http://cdn.jirengu.com/ppt-cli/js/lib/reveal.js"></script>
+		<script src="http://cdn.jirengu.com/ppt-cli/js/lib/classList.js"></script>
+		<script src="http://cdn.jirengu.com/ppt-cli/js/plugin/highlight/highlight.js"></script>
+		<script src="http://cdn.jirengu.com/ppt-cli/js/plugin/zoom-js/zoom.js"></script>
+		<script src="http://cdn.jirengu.com/ppt-cli/js/plugin/notes/notes.js"></script>
+		<script src="http://cdn.jirengu.com/ppt-cli/js/plugin/other/plugin.js"></script>
+
+		
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				transition: 'slide' // none/fade/slide/convex/concave/zoom
+			});
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+			    runScript(event.currentSlide);
+			} );
+
+			hljs.initHighlightingOnLoad();
+
+			function runScript(section){
+				var scriptStr = section.getAttribute('data-script');
+				if(scriptStr){
+					scriptStr = decodeURIComponent(scriptStr);
+					var tag = document.createElement('script');
+					tag.innerHTML = scriptStr;
+					document.head.appendChild(tag);
+				}
+
+			}
+		</script>
+
+	</body>
+</html>
