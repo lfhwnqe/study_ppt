@@ -1,0 +1,23 @@
+{
+  "name": "study_ppt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ppt share.md --theme=beige  --align=left --title=分享"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lfhwnqe/study_ppt.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lfhwnqe/study_ppt/issues"
+  },
+  "homepage": "https://github.com/lfhwnqe/study_ppt#readme",
+  "dependencies": {
+    "ppt-cli": "^1.2.14"
+  }
+}
