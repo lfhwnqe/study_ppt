@@ -30,7 +30,7 @@ v-model 实际做了两个操作
 data: {
     user: { name: 'liLei'}
 },
-<input :value="user.name" @input="user.name = $event">
+<input type="text" :value=user.name @input="user.name=$event.target.value">
 ```
 
 ### 考虑如下场景
@@ -57,8 +57,14 @@ data: {
  现在 vue 更倾向于单向绑定
 但是也提供了  双向绑定语法糖。如果一定想在子组件内更改父组件的值也是可以的(贴物流项目内的代码)
 
+语法糖
+
 ```
-.sync语法糖
+// 父组件
+<Tp-dateRange :startTime.sync="searchForm.createBeginDate" :endTime.sync="searchForm.createEndDate"></Tp-dateRange>
+
+// 子组件
+this.$emit('update:endTime', v);
 ```
 
 ### vue 的渐进式
@@ -221,6 +227,57 @@ virtulaDOM 本质是在 js 与 DOM 之间做了一个缓存，最大化的利用
 
 js 的运行速度非常快，相反 DOM 本身很慢，调用原  生 DOM API，浏览器需要在 javascript 引擎的语境下接触原生 DOM 的实现，过程有性能损耗，virtulaDOM 本质上是把浩时间的操作放到存粹的计算来做。把最后的结果一次性渲染的页面上。减少了 repaint 和 reflow。提高了性能
 
+## AST 抽象语法树
+
+###  函数拆解
+
+```
+function fn(a, b){
+    return a + b
+}
+```
+
+### 拆解一
+
+function id，即 fn
+
+```
+{name: 'fn', type: 'identifier'}
+```
+
+### 拆解二
+
+两个参数，[a, b]
+
+```
+[{name: 'a', type: 'identifier'},{name: 'b', type: 'identifier'}]
+```
+
+### 拆解三
+
+函数的 body，大括号内的部分
+
+1. 块状域
+
+```
+{}  //
+```
+
+2. return 域
+
+```
+return a + b
+```
+
+3. 二项式对象(由 left,operator,right 构成)
+   - left 里边是 a
+   - operator 里边是+
+   - right 里边是 b
+
+### 使用 ast 修改函数
+
+使用[recast](https://www.npmjs.com/package/recast)可以解析修改 javascrpit 代码
+
 ## 表编程
 
 > 编写程序过程中，常遇到很多的 if else，可以用表来代替复杂的分支
@@ -269,7 +326,7 @@ var table = {
 }
 ```
 
-## 非技术分享
+## 其他
 
 ### teahour
 
@@ -279,20 +336,9 @@ var table = {
 
 [视频](https://www.youtube.com/watch?v=XRYN2xt11Ek)
 
+[DEMO](http://js.jirengu.com/jebiq/2/edit?html,js,output)
+
 ## 问题
-
-### 同一个表单字段，不同情况下对应不同的校验规则
-
- 一个证件号对应多个产品类型，每个类型都需要填写
-借款额度
-产品类型一 借款额度 限制 3-8
-产品类型二 借款额度 限制 1-12
-产品类型三 借款额度 限制 5-10
-
-实际场景中产品类型会不停增加。
-目前的解决方案是把 v-model 绑定到一个字段 表单验证 prop 规则绑定到对应每一个产品的字段。然后 watch 主要字段，再根据主要字段的变更把值赋给当前相应产品类型的字段、清空其他字段的值
-
-另外还有 computed 动态计算验证规则
 
 ###  前端的学习路径
 

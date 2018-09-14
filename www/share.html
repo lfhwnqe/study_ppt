@@ -52,7 +52,7 @@
 <pre><code>data: {
     user: { name: &apos;liLei&apos;}
 },
-&lt;input :value=&quot;user.name&quot; @input=&quot;user.name = $event&quot;&gt;
+&lt;input type=&quot;text&quot; :value=user.name @input=&quot;user.name=$event.target.value&quot;&gt;
 </code></pre>
 </section><section data-tag="h3"><h3>&#x8003;&#x8651;&#x5982;&#x4E0B;&#x573A;&#x666F;</h3>
 <p>&#x5047;&#x8BBE;&#x6709;&#x4E24;&#x4E2A;&#x5730;&#x65B9;&#x90FD;&#x5728;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x679C;&#x4E24;&#x4E2A;&#x5730;&#x65B9;&#x540C;&#x65F6;&#x6539;&#x4E86;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#xFF0C;&#x90A3;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x6700;&#x540E;&#x7684;&#x503C;&#x662F;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;</p>
@@ -71,7 +71,12 @@
 </section><section data-tag="h3"><h3>&#x8BED;&#x6CD5;&#x7CD6;</h3>
 <p> &#x73B0;&#x5728; vue &#x66F4;&#x503E;&#x5411;&#x4E8E;&#x5355;&#x5411;&#x7ED1;&#x5B9A;
 &#x4F46;&#x662F;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;  &#x53CC;&#x5411;&#x7ED1;&#x5B9A;&#x8BED;&#x6CD5;&#x7CD6;&#x3002;&#x5982;&#x679C;&#x4E00;&#x5B9A;&#x60F3;&#x5728;&#x5B50;&#x7EC4;&#x4EF6;&#x5185;&#x66F4;&#x6539;&#x7236;&#x7EC4;&#x4EF6;&#x7684;&#x503C;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x7684;(&#x8D34;&#x7269;&#x6D41;&#x9879;&#x76EE;&#x5185;&#x7684;&#x4EE3;&#x7801;)</p>
-<pre><code>.sync&#x8BED;&#x6CD5;&#x7CD6;
+<p>&#x8BED;&#x6CD5;&#x7CD6;</p>
+<pre><code>// &#x7236;&#x7EC4;&#x4EF6;
+&lt;Tp-dateRange :startTime.sync=&quot;searchForm.createBeginDate&quot; :endTime.sync=&quot;searchForm.createEndDate&quot;&gt;&lt;/Tp-dateRange&gt;
+
+// &#x5B50;&#x7EC4;&#x4EF6;
+this.$emit(&apos;update:endTime&apos;, v);
 </code></pre>
 </section><section data-tag="h3"><h3>vue &#x7684;&#x6E10;&#x8FDB;&#x5F0F;</h3>
 <blockquote>
@@ -191,6 +196,43 @@ const TEXT = 1  // text&#x53D8;&#x5316;
 <p>virtulaDOM &#x672C;&#x8D28;&#x662F;&#x5728; js &#x4E0E; DOM &#x4E4B;&#x95F4;&#x505A;&#x4E86;&#x4E00;&#x4E2A;&#x7F13;&#x5B58;&#xFF0C;&#x6700;&#x5927;&#x5316;&#x7684;&#x5229;&#x7528;&#x9AD8;&#x6548;&#x7684; js &#x6765;&#x5904;&#x7406; DOM &#x64CD;&#x4F5C;</p>
 </section><section data-tag="h3"><h3>&#x4F18;&#x52BF;</h3>
 <p>js &#x7684;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#x975E;&#x5E38;&#x5FEB;&#xFF0C;&#x76F8;&#x53CD; DOM &#x672C;&#x8EAB;&#x5F88;&#x6162;&#xFF0C;&#x8C03;&#x7528;&#x539F;  &#x751F; DOM API&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x9700;&#x8981;&#x5728; javascript &#x5F15;&#x64CE;&#x7684;&#x8BED;&#x5883;&#x4E0B;&#x63A5;&#x89E6;&#x539F;&#x751F; DOM &#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x8FC7;&#x7A0B;&#x6709;&#x6027;&#x80FD;&#x635F;&#x8017;&#xFF0C;virtulaDOM &#x672C;&#x8D28;&#x4E0A;&#x662F;&#x628A;&#x6D69;&#x65F6;&#x95F4;&#x7684;&#x64CD;&#x4F5C;&#x653E;&#x5230;&#x5B58;&#x7CB9;&#x7684;&#x8BA1;&#x7B97;&#x6765;&#x505A;&#x3002;&#x628A;&#x6700;&#x540E;&#x7684;&#x7ED3;&#x679C;&#x4E00;&#x6B21;&#x6027;&#x6E32;&#x67D3;&#x7684;&#x9875;&#x9762;&#x4E0A;&#x3002;&#x51CF;&#x5C11;&#x4E86; repaint &#x548C; reflow&#x3002;&#x63D0;&#x9AD8;&#x4E86;&#x6027;&#x80FD;</p>
+</section></section><section data-tag="down"><section data-tag="h2"><h2>AST &#x62BD;&#x8C61;&#x8BED;&#x6CD5;&#x6811;</h2>
+</section><section data-tag="h3"><h3> &#x51FD;&#x6570;&#x62C6;&#x89E3;</h3>
+<pre><code>function fn(a, b){
+    return a + b
+}
+</code></pre>
+</section><section data-tag="h3"><h3>&#x62C6;&#x89E3;&#x4E00;</h3>
+<p>function id&#xFF0C;&#x5373; fn</p>
+<pre><code>{name: &apos;fn&apos;, type: &apos;identifier&apos;}
+</code></pre>
+</section><section data-tag="h3"><h3>&#x62C6;&#x89E3;&#x4E8C;</h3>
+<p>&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;[a, b]</p>
+<pre><code>[{name: &apos;a&apos;, type: &apos;identifier&apos;},{name: &apos;b&apos;, type: &apos;identifier&apos;}]
+</code></pre>
+</section><section data-tag="h3"><h3>&#x62C6;&#x89E3;&#x4E09;</h3>
+<p>&#x51FD;&#x6570;&#x7684; body&#xFF0C;&#x5927;&#x62EC;&#x53F7;&#x5185;&#x7684;&#x90E8;&#x5206;</p>
+<ol>
+<li>&#x5757;&#x72B6;&#x57DF;</li>
+</ol>
+<pre><code>{}  //
+</code></pre>
+<ol start="2">
+<li>return &#x57DF;</li>
+</ol>
+<pre><code>return a + b
+</code></pre>
+<ol start="3">
+<li>&#x4E8C;&#x9879;&#x5F0F;&#x5BF9;&#x8C61;(&#x7531; left,operator,right &#x6784;&#x6210;)
+<ul>
+<li>left &#x91CC;&#x8FB9;&#x662F; a</li>
+<li>operator &#x91CC;&#x8FB9;&#x662F;+</li>
+<li>right &#x91CC;&#x8FB9;&#x662F; b</li>
+</ul>
+</li>
+</ol>
+</section><section data-tag="h3"><h3>&#x4F7F;&#x7528; ast &#x4FEE;&#x6539;&#x51FD;&#x6570;</h3>
+<p>&#x4F7F;&#x7528;<a href="https://www.npmjs.com/package/recast">recast</a>&#x53EF;&#x4EE5;&#x89E3;&#x6790;&#x4FEE;&#x6539; javascrpit &#x4EE3;&#x7801;</p>
 </section></section><section data-tag="down"><section data-tag="h2"><h2>&#x8868;&#x7F16;&#x7A0B;</h2>
 <blockquote>
 <p>&#x7F16;&#x5199;&#x7A0B;&#x5E8F;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5E38;&#x9047;&#x5230;&#x5F88;&#x591A;&#x7684; if else&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x8868;&#x6765;&#x4EE3;&#x66FF;&#x590D;&#x6742;&#x7684;&#x5206;&#x652F;</p>
@@ -231,21 +273,13 @@ const TEXT = 1  // text&#x53D8;&#x5316;
     }
 }
 </code></pre>
-</section></section><section data-tag="down"><section data-tag="h2"><h2>&#x975E;&#x6280;&#x672F;&#x5206;&#x4EAB;</h2>
+</section></section><section data-tag="down"><section data-tag="h2"><h2>&#x5176;&#x4ED6;</h2>
 </section><section data-tag="h3"><h3>teahour</h3>
 <p><a href="http://teahour.fm/">&#x94FE;&#x63A5;</a></p>
 </section><section data-tag="h3"><h3>RXjs</h3>
-<p><a href="https://www.youtube.com/watch?v=XRYN2xt11Ek">&#x89C6;&#x9891;</a></p>
+<p><a href="https://www.youtube.com/watch?v=XRYN2xt11Ek">&#x89C6;&#x9891;</a>
+<a href="http://js.jirengu.com/jebiq/2/edit?html,js,output">DEMO</a></p>
 </section></section><section data-tag="down"><section data-tag="h2"><h2>&#x95EE;&#x9898;</h2>
-</section><section data-tag="h3"><h3>&#x540C;&#x4E00;&#x4E2A;&#x8868;&#x5355;&#x5B57;&#x6BB5;&#xFF0C;&#x4E0D;&#x540C;&#x60C5;&#x51B5;&#x4E0B;&#x5BF9;&#x5E94;&#x4E0D;&#x540C;&#x7684;&#x6821;&#x9A8C;&#x89C4;&#x5219;</h3>
-<p> &#x4E00;&#x4E2A;&#x8BC1;&#x4EF6;&#x53F7;&#x5BF9;&#x5E94;&#x591A;&#x4E2A;&#x4EA7;&#x54C1;&#x7C7B;&#x578B;&#xFF0C;&#x6BCF;&#x4E2A;&#x7C7B;&#x578B;&#x90FD;&#x9700;&#x8981;&#x586B;&#x5199;
-&#x501F;&#x6B3E;&#x989D;&#x5EA6;
-&#x4EA7;&#x54C1;&#x7C7B;&#x578B;&#x4E00; &#x501F;&#x6B3E;&#x989D;&#x5EA6; &#x9650;&#x5236; 3-8
-&#x4EA7;&#x54C1;&#x7C7B;&#x578B;&#x4E8C; &#x501F;&#x6B3E;&#x989D;&#x5EA6; &#x9650;&#x5236; 1-12
-&#x4EA7;&#x54C1;&#x7C7B;&#x578B;&#x4E09; &#x501F;&#x6B3E;&#x989D;&#x5EA6; &#x9650;&#x5236; 5-10</p>
-<p>&#x5B9E;&#x9645;&#x573A;&#x666F;&#x4E2D;&#x4EA7;&#x54C1;&#x7C7B;&#x578B;&#x4F1A;&#x4E0D;&#x505C;&#x589E;&#x52A0;&#x3002;
-&#x76EE;&#x524D;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x662F;&#x628A; v-model &#x7ED1;&#x5B9A;&#x5230;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5; &#x8868;&#x5355;&#x9A8C;&#x8BC1; prop &#x89C4;&#x5219;&#x7ED1;&#x5B9A;&#x5230;&#x5BF9;&#x5E94;&#x6BCF;&#x4E00;&#x4E2A;&#x4EA7;&#x54C1;&#x7684;&#x5B57;&#x6BB5;&#x3002;&#x7136;&#x540E; watch &#x4E3B;&#x8981;&#x5B57;&#x6BB5;&#xFF0C;&#x518D;&#x6839;&#x636E;&#x4E3B;&#x8981;&#x5B57;&#x6BB5;&#x7684;&#x53D8;&#x66F4;&#x628A;&#x503C;&#x8D4B;&#x7ED9;&#x5F53;&#x524D;&#x76F8;&#x5E94;&#x4EA7;&#x54C1;&#x7C7B;&#x578B;&#x7684;&#x5B57;&#x6BB5;&#x3001;&#x6E05;&#x7A7A;&#x5176;&#x4ED6;&#x5B57;&#x6BB5;&#x7684;&#x503C;</p>
-<p>&#x53E6;&#x5916;&#x8FD8;&#x6709; computed &#x52A8;&#x6001;&#x8BA1;&#x7B97;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;</p>
 </section><section data-tag="h3"><h3> &#x524D;&#x7AEF;&#x7684;&#x5B66;&#x4E60;&#x8DEF;&#x5F84;</h3>
 <blockquote>
 <p> &#x5BF9;&#x524D;&#x7AEF;&#x6210;&#x957F;&#x8DEF;&#x5F84;&#x6709;&#x7591;&#x95EE;</p>
