@@ -1,14 +1,14 @@
 # 分享
 
-## vue 分享
+## VUE 分享
 
-### vue 的双向绑定到单向绑定
+### VUE 的双向绑定到单向绑定
 
-面试题： vue 和 react 的区别
+面试题： VUE 和 react 的区别
 
-普遍回答会包含这个答案：vue 是双向绑定，react 是单向绑定
+普遍回答会包含这个答案：VUE 是双向绑定，react 是单向绑定
 
-从 Vue 0.x 开始，Vue 就用 v-model 来实现「双向绑定」。
+从 VUE 0.x 开始，VUE 就用 v-model 来实现「双向绑定」。
 
 ```
 data: {
@@ -24,7 +24,7 @@ v-model 实际做了两个操作
 1. user.name 的变化自动同步到 input.value
 2. input.value 的变化自动同步到 user.name
 
-flux 兴起过后，vue 的作者重新审视了双向绑定，发现双向绑定的一些问题后，更倾向于单向绑定，v-model 被拆成了两个部分
+flux 兴起过后，VUE 的作者重新审视了双向绑定，发现双向绑定的一些问题后，更倾向于单向绑定，v-model 被拆成了两个部分
 
 ```
 data: {
@@ -43,9 +43,9 @@ data: {
 
 > 一个数据只能一个人改，只有拥有这个数据的人才能更改数据
 
-例如 app 组件把 user.name 同时传递给了两个组件 a 和 b，两个组件都不能更改数据，如果需要更改数据，需要向 app 组件提出申请，app 组件接到了申请，统一把数据的改变通知给使用 user.name 的组件 a 和 b。这样的好处
+例: app 组件把 user.name 同时传递给了两个组件 a 和 b，两个组件都不能更改数据，如果需要更改数据，需要向 app 组件提出申请，app 组件接到了申请，统一把数据的改变通知给使用 user.name 的组件 a 和 b。这样的好处
 
-1.  数据拥有者清楚地知道数据变化的原因和时机（因为是它自己操作数据的）
+1. 数据拥有者清楚地知道数据变化的原因和时机（因为是它自己操作数据的）
 2. 数据拥有者可以阻止数据变化（app 组件可以轻松的控制 user.name 的变化，让程序更可控）
 
 ### 举例
@@ -54,24 +54,25 @@ data: {
 
 ### 语法糖
 
-现在 vue 更倾向于单向绑定
+现在 VUE 更倾向于单向绑定
 但是也提供了  双向绑定语法糖。如果一定想在子组件内更改父组件的值也是可以的(贴物流项目内的代码)
 
 语法糖
 
 ```
 // 父组件
-<Tp-dateRange :startTime.sync="searchForm.createBeginDate" :endTime.sync="searchForm.createEndDate"></Tp-dateRange>
+<Tp-dateRange :startTime.sync="searchForm.createBeginDate" 
+    :endTime.sync="searchForm.createEndDate"></Tp-dateRange>
 
 // 子组件
 this.$emit('update:endTime', v);
 ```
 
-### vue 的渐进式
+### VUE 的渐进式
 
-> 个人认为 vue 的渐进式是它更优于 react 的地方
+> 个人认为 VUE 的渐进式是它更优于 react 的地方
 
-所以很多原 jquery 项目可以很轻松的切换到 vue 来写。
+所以很多原 jquery 项目可以很轻松的切换到 VUE 来写。
 
 ```
 var data = {
@@ -80,7 +81,7 @@ var data = {
         hello:'hello world'
     }
 }
-var app = new Vue(data)
+var app = new VUE(data)
 
 $('#box').on('click', '.btn', function(e){
     data.data.hello = e.target.innerText
@@ -93,7 +94,7 @@ $('#box').on('click', '.btn', function(e){
 
 
 
-### vue 与 jquery 的区别
+### VUE 与 jquery 的区别
 
 ```
 // jquery
@@ -104,18 +105,18 @@ $('.box')
   .jjj()
   ...
 
-// vue
+// VUE
 <div v-if="show">{{msg}}</div>
 ```
 
-jquery 有两种行为，更改状态+操作 DOM，vue 只需操作状态。
-vue 的操作可以让我们只关心状态的改变，减少了对 DOM 的操作，大大降低了代码的复杂度
+jquery 有两种行为，更改状态+操作 DOM，VUE 只需操作状态。
+VUE 的操作可以让我们只关心状态的改变，减少了对 DOM 的操作，大大降低了代码的复杂度
 
-###  渲染
+### 渲染
 
-jquery 复杂的 DOM 操作，vue 是怎么帮我们实现的呢
+jquery 复杂的 DOM 操作，VUE 是怎么帮我们实现的呢
 
- 简单粗暴的方式
+简单粗暴的方式
 
 ```
 var msg = 'hello world'
@@ -129,7 +130,7 @@ var msg = 'hello world'
 
 VirtualDOM、脏检测、细粒度绑定
 
-vue 早期使用过细粒度方案，如果模版中数据有是 10 个标签使用它，那么变量绑定的就是 10 个具体的标签。数据改变的一瞬间，vue 就知道状态的变化，直接把与这个状态绑定的标签进行更新，达到局部更新的目的
+VUE 早期使用过细粒度方案，如果模版中数据有是 10 个标签使用它，那么变量绑定的就是 10 个具体的标签。数据改变的一瞬间，VUE 就知道状态的变化，直接把与这个状态绑定的标签进行更新，达到局部更新的目的
 
 这个方案有一定的  代价，粒度太小，有一定的追踪开销。
 
@@ -146,12 +147,12 @@ console.log(str)
 
 运行上面代码可以看出，创建一个 DOM 节点，会生成很多不必要的属性，如果每次都去新建销毁，会浪费大量资源
 
-### vue 的 VirtualDOM
+### VUE 的 VirtualDOM
 
 > 一个状态对应某个组件，而不是具体标签，状态发生变化时，通知组件，组件再使用 VirtualDOM 来更新具体的 DOM
-> vue 在编译会把 vue 模版编译成一个渲染函数，函数被调用后会返回一个虚拟的 DOM 树，这个 DOM 树用来描述当前页面所处的状态。vue 的 patch 方法负责把 virtulaDOM 渲染到真实 DOM 上
+VUE 在编译会把 VUE 模版编译成一个渲染函数，函数被调用后会返回一个虚拟的 DOM 树，这个 DOM 树用来描述当前页面所处的状态。VUE 的 patch 方法负责把 virtulaDOM 渲染到真实 DOM 上
 
-上面讲到了 vue 在数据改变时通知组件，组件内部执行渲染函数生成新的树，然后与旧的树进行对比，得到最终需要更改的真实 DOM 上的变化，然后调用 patch 方法渲染 DOM
+上面讲到了 VUE 在数据改变时通知组件，组件内部执行渲染函数生成新的树，然后与旧的树进行对比，得到最终需要更改的真实 DOM 上的变化，然后调用 patch 方法渲染 DOM
 
 ### virtulaDOM 原理
 
@@ -200,7 +201,11 @@ var element = {
   ```
 - 差异进行对比
   ```
-  dif = [{type:REPLACE,newNode:{tagName:'ul',props:{}]
+  dif = [
+      {
+          type: REPLACE,
+          newNode: {tagName:'ul',props: {}
+      ]
   ```
 
 ### 第三步
@@ -342,9 +347,9 @@ var table = {
 
 ## 问题
 
-###  前端的学习路径
+### 前端的学习路径
 
 >  对前端成长路径有疑问
 
-1.  做一个 T 型前端，技术的宽度如何定义(或应该专哪些，宽泛了解)
-2.  一个专业的前端对后端的知识掌握应该到程度（或者最终都要走向全栈的道路？）
+1. 做一个 T 型前端，技术的宽度如何定义(或应该专哪些，宽泛了解)
+2. 一个专业的前端对后端的知识掌握应该到程度（或者最终都要走向全栈的道路？）
